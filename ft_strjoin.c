@@ -1,39 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/11 11:32:46 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/14 17:58:30 by aalamino         ###   ########.fr       */
+/*   Created: 2023/03/11 11:59:50 by aalamino          #+#    #+#             */
+/*   Updated: 2023/03/14 18:04:47 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	size_t	j;
 	char	*pointer;
-
-	i = (size_t) start;
-	pointer = (char *)malloc(len);
-	j = 0;
-	while (j < len)
+	int		i;
+	int		j;
+	
+	pointer = (char *)malloc(ft_strlen(s1) + ft_strlen(s2));
+	if (pointer == NULL)
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0')
 	{
-		pointer[j] = s[i];
+		pointer[i] = s1[i];
 		++i;
+	}
+	j = 0;
+	while (s2[j] != '\0')
+	{
+		pointer[i  + j] = s2[j];
 		++j;
 	}
 	return (pointer);
 }
-
+/*
 int	main(void)
 {
-	char	str[] = "hola buenas como andamos";
-	printf("ft_substr: %s", ft_substr(str, 2, 6));
+	char	str[] = "hola buenas";
+	char	str2[] = " como andamos";
+	printf("ft_strjoin: %s", ft_strjoin(str, str2));
 	return (0);
-}
+}*/

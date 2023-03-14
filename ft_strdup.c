@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 11:21:18 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/11 11:31:29 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:03:57 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strdup(const char *s1)
 	char	*pointer;
 	int		i;
 
-	pointer = (char *)malloc(strlen(s1) + 1);
+	pointer = (char *)malloc(ft_strlen(s1) + 1);
 	if (pointer == NULL)
 		return (NULL);
 	i = 0;

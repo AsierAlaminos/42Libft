@@ -6,12 +6,12 @@
 #    By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 10:46:58 by aalamino          #+#    #+#              #
-#    Updated: 2023/03/11 11:01:48 by aalamino         ###   ########.fr        #
+#    Updated: 2023/03/14 17:47:08 by aalamino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-COMMAND = cc -Wall -Wextra -Werror -I, -c
+COMMAND = gcc -Wall -Wextra -Werror -I. -c
 FILES = ft_isalpha.c \
 		ft_isdigit.c \
 		ft_isalnum.c \
@@ -33,13 +33,18 @@ FILES = ft_isalpha.c \
 		ft_memcpy.c \
 		ft_strnstr.c \
 		ft_atoi.c \
-		ft_calloc.c
+		ft_calloc.c \
+		ft_strdup.c \
+		ft_substr.c \
+		ft_strjoin.c \
+		ft_strtrim.c \
+		ft_split.c
 OBJ = $(FILES:%.c=%.o)
 
 all:$(NAME)
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 	ranlib $(NAME)
 	echo "Compilando libft"
 
