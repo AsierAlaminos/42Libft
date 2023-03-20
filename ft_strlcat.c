@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 17:26:05 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/11 11:04:48 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:07:44 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <string.h>
 
-size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstlen)
 {
 	size_t	i;
 	size_t	j;
@@ -23,13 +23,12 @@ size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 	while (dst[j] != '\0')
 		++j;
 	i = 0;
-	while (src[i] != '\0' && i < dstsize)
+	while (src[i] != '\0' && i < dstlen)
 	{
-		printf("Aqui2");
 		dst[j + i] = src[i];
 		++i;
 	}
-	if (dstsize != '\0' && j + i < dstsize)
+	if (dstlen != '\0' && j + i < dstlen)
 		dst[i + j] = '\0';
 	return (i + j);
 }
@@ -39,7 +38,7 @@ int	main(void)
 	char	src[] = "hola buenas";
 	char	dst[20] = "jajajaj";
 	printf("Antes: %s\n", dst);
-	strlcat(dst, src, -1);
+	strlcat(dst, src, 14);
 	printf("Despues: %s\n", dst);
 	return (0);
 }*/

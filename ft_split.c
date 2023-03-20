@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:15:28 by asmus37           #+#    #+#             */
-/*   Updated: 2023/03/14 18:43:19 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:31:53 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int	del_count(char const *s, char c)
+static int	del_count(char const *s, char c)
 {
 	int	i;
 	int	j;
@@ -31,7 +31,7 @@ int	del_count(char const *s, char c)
 	return (i);
 }
 
-int	str_count(char const *s, char c, int i)
+static int	str_count(char const *s, char c, int i)
 {
 	int	len;
 
@@ -44,7 +44,7 @@ int	str_count(char const *s, char c, int i)
 	return (len);
 }
 
-char	**add_str(char const *s, char **arr, int arr_len, char c)
+static char	**add_str(char const *s, char **arr, int arr_len, char c)
 {
 	int	i;
 	int	j;
@@ -64,16 +64,12 @@ char	**add_str(char const *s, char **arr, int arr_len, char c)
 		if (arr[i] == NULL)
 			return (NULL);
 		while (s[k] == c)
-			++k;	
-		while (j < len)
-		{
-			arr[i][j] = s[k];
 			++k;
-			++j;
-		}
+		while (j < len)
+			arr[i][j++] = s[k++];
 		++i;
 	}
-	return(arr);
+	return (arr);
 }
 
 char	**ft_split(char const *s, char c)
@@ -82,27 +78,8 @@ char	**ft_split(char const *s, char c)
 	char	**arr;
 
 	arr_len = del_count(s, c);
-	arr = (char **)malloc(sizeof(char*) * (ft_strlen(s) - arr_len));
+	arr = (char **)malloc(sizeof(char *) * (ft_strlen(s) - arr_len));
 	if (arr == NULL)
 		return (NULL);
 	return (add_str(s, arr, arr_len, c));
 }
-/*
-int	main(void)
-{
-	char	str[] = "hola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamoshola buenas: como :andamos";
-	char	c = ':';
-	char	**strings;
-	unsigned long	i;
-
-	strings = ft_split(str, c);
-	i = 0;
-	printf("ft_string: \n{\n");
-	while (i < sizeof(strings) + 2)
-	{
-		printf("|%s|\n", strings[i]);
-		++i;
-	}
-	printf("}\n");
-	return (0);
-}*/

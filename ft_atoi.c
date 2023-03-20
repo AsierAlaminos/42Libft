@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:47:03 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/10 19:48:58 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:43:39 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_atoi(const char *str)
 /*
 int	main(void)
 {
-	char	str[] = "-\n1233a43";
+	char	str[] = "-123+3a43";
 	printf("ft_atoi: %d\n", ft_atoi(str));
 	printf("atoi: %d\n", atoi(str));
 	return (0);

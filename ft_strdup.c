@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 11:21:18 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/14 18:03:57 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:39:24 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strdup(const char *s1)
 	pointer[i] = '\0';
 	return (pointer);
 }
-
+/*
 int	main(void)
 {
 	char	str[] = "hola buenas como andamos";
@@ -40,4 +40,4 @@ int	main(void)
 	printf("ft_strdup: %s", ft_strdup(str));
 	printf("strdup: %s", strdup(str));
 	return (0);
-}
+}*/

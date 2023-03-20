@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:42:35 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/10 19:48:19 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:48:47 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,34 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	i;
 	char	*a;
 	char	*b;
 
+	if (dst == NULL && src == NULL)
+		return (NULL);
 	b = (char *)dst;
 	a = (char *)src;
-	i = 0;
-	while (b[i] != '\0' && a[i] != '\0' && i < len)
+	while (len > 0)
 	{
-		b[i] = a[i];
-		++i;
+		--len;
+		b[len] = a[len];
 	}
 	return (dst);
 }
 /*
 int	main(void)
 {
-	char	src[] = "abcdefgh";
-    char 	dst[] = "12345678";
+	char	src[] = "lorem ipsum dolor sit amet";
+	char 	src2[] = "lorem ipsum dolor sit amet";
+    char 	*dst;
+	char	*dst2;
 	
-	//printf("ft_memmove: %s\n");
+	dst = src + 1;
+	dst2 = src2 + 1;
 	printf("antes: %s\n", dst);
-	ft_memmove(dst + 4, src + 4, -1);
-	printf("memmove: %s\n", dst);
+	ft_memmove(dst, src, 8);
+	printf("ft_memmove: %s\n", dst);
+	memmove(dst2, src2, 8);
+	printf("memmove: %s\n", dst2);
 	return (0);
 }*/

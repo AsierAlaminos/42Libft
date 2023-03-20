@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 18:09:41 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/14 17:51:04 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:34:03 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*pointer;
-	
+
 	pointer = malloc(count * size);
 	if (!pointer)
 		return (NULL);
 	else
-		bzero(pointer, count * size);
+		ft_bzero(pointer, count * size);
 	return (pointer);
 }
 /*

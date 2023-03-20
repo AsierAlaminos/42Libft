@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:14:47 by asmus37           #+#    #+#             */
-/*   Updated: 2023/03/14 18:01:08 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:33:22 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string.h>
 #include "libft.h"
 
-int	string_detect(char const *str, char character)
+static int	string_detect(char const *str, char character)
 {
 	int	i;
 
@@ -53,11 +53,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	pointer[k] = '\0';
 	return (pointer);
 }
-
+/*
 int	main(void)
 {
 	char	str[] = "hola buenas que tal andamos";
 	char	set[] = "aob";
 	printf("ft_strtrim: %s\n",ft_strtrim(str, set));
 	return (0);
-}
+}*/
