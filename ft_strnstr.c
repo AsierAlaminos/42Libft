@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:39:40 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/10 18:28:16 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:55:58 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	{
 		j = 0;
 		while (haystack[i + j] != '\0' && haystack[i + j] == needle[j]
-			&& j < len)
+			&& i + j < len)
 		{
 			if (needle[j + 1] == '\0')
 				return (&str[i]);
@@ -44,9 +44,9 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 /*
 int	main(void)
 {
-	char	str[] = "Hola mundo";
-	char	needle[] = "mun";
-	int		n = 3;
+	char	str[] = "lorem ipsum dolor sit amet";
+	char	needle[] = "dolor";
+	int		n = 15;
 
 	printf("ft_strnstr: %s\n", ft_strnstr(str, needle, n));
 	printf("strnstr: %s\n", strnstr(str, needle, n));

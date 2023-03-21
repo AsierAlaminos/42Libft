@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 11:59:50 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/15 19:42:06 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:34:24 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	pointer = (char *)malloc(ft_strlen(s1) + ft_strlen(s2));
+	pointer = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (pointer == NULL)
 		return (NULL);
 	i = 0;
@@ -36,6 +36,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		pointer[i + j] = s2[j];
 		++j;
 	}
+	pointer[i + j] = '\0';
 	return (pointer);
 }
 /*

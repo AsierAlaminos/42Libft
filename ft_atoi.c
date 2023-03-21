@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:47:03 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/16 15:43:39 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:20:31 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,15 @@ int	ft_atoi(const char *str)
 	neg = 1;
 	num = 0;
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r'
-		|| (str[i] >= '0' && str[i] <= '9') || str[i] == '-')
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		++i;
+	if (str[i] == '-')
+		neg = neg * -1;
+	if (str[i] == '-' || str[i] == '+')
+		++i;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (str[i] == '-')
-		{
-			if (neg == -1)
-				return (num * neg);
-			if (str[i + 1] < '0' || str[i] > '9')
-				return (num * neg);
-			neg = neg * -1;
-		}
-		if (str[i] >= '0' && str[i] <= '9')
-			num = num * 10 + (int)(str[i] - '0');
+		num = num * 10 + (int)(str[i] - '0');
 		++i;
 	}
 	return (num * neg);
@@ -44,7 +40,7 @@ int	ft_atoi(const char *str)
 /*
 int	main(void)
 {
-	char	str[] = "-123+3a43";
+	char	str[] = "-4886";
 	printf("ft_atoi: %d\n", ft_atoi(str));
 	printf("atoi: %d\n", atoi(str));
 	return (0);

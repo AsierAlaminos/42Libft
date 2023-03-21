@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:15:28 by asmus37           #+#    #+#             */
-/*   Updated: 2023/03/16 15:31:53 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:41:37 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,14 @@ static char	**add_str(char const *s, char **arr, int arr_len, char c)
 		j = 0;
 		len = str_count(s, c, len_str);
 		len_str = len + len_str + 1;
-		arr[i] = (char *)malloc(len);
+		arr[i] = (char *)malloc(len + 1);
 		if (arr[i] == NULL)
 			return (NULL);
 		while (s[k] == c)
 			++k;
 		while (j < len)
 			arr[i][j++] = s[k++];
+		arr[i][j] = '\0';
 		++i;
 	}
 	return (arr);
@@ -82,4 +83,21 @@ char	**ft_split(char const *s, char c)
 	if (arr == NULL)
 		return (NULL);
 	return (add_str(s, arr, arr_len, c));
+}
+
+int	main(void)
+{
+	char	str[] = "          ";
+	char	del = ' ';
+	char	**splited;
+	size_t		i;
+
+	splited = ft_split(str, del);
+	i = 0;
+	while (i < sizeof(splited))
+	{
+		printf("ft_split: %s", splited[i]);
+		++i;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 17:09:09 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/16 17:07:27 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:30:27 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,34 @@
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstlen)
 {
 	size_t	i;
+	size_t	len;
 
 	i = 0;
-	while (i < dstlen && dst != '\0' && src != '\0')
+	if (src == NULL)
+		return (0);
+	len = ft_strlen(src);
+	if (dstlen == 0)
+		return (len);
+	while (i < len && dst != '\0' && src != '\0' && i < (dstlen - 1))
 	{
 		dst[i] = src[i];
 		++i;
 	}
 	if (dstlen != 0)
 		dst[i] = '\0';
-	return (i);
+	return (len);
 }
 /*
 int	main(void)
 {
-	char	src[] = "hola buenas";
-	char	dst[13] = "jajajaj";
-	printf("Antes: %s\n", dst);
-	ft_strlcpy(dst, src, sizeof(dst));
-	printf("Despues: %s\n", dst);
+	char	*dest;
+
+	if (!(dest = (char *)malloc(sizeof(*dest) * 15)))
+		return (0);
+	ft_memset(dest, 0, 15);
+	ft_memset(dest, 'r', 6);
+	printf("Antes: %s\n", dest);
+	printf("size_t: %zu\n", ft_strlcpy(dest, "lorem ipsum dolor sit amet", 15));
+	printf("Despues: %s\n", dest);
 	return (0);
 }*/

@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:41:46 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/10 19:48:42 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:32:25 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,16 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	if (lp != -1)
 		return (&str[lp]);
+	if (c == '\0')
+		return (&str[i]);
 	return (NULL);
 }
 /*
 int	main(void)
 {
-	char	str[] = "hola buenas";
-	char	c = 'a';
-	printf("ft_strchr: %s\n", ft_strrchr(str, c));
-	printf("strchr: %s\n", strrchr(str, c));
+	char	str[] = "bonjour";
+
+	printf("ft_strchr: %s\n", ft_strrchr(str, '\0'));
+	printf("strchr: %s\n", strrchr(str, '\0'));
 	return (0);
 }*/
