@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:15:28 by asmus37           #+#    #+#             */
-/*   Updated: 2023/03/21 18:41:37 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/21 19:10:51 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,17 @@ static char	**add_str(char const *s, char **arr, int arr_len, char c)
 		arr[i] = (char *)malloc(len + 1);
 		if (arr[i] == NULL)
 			return (NULL);
-		while (s[k] == c)
-			++k;
 		while (j < len)
+		{
+			printf("s[%d]: %c", k, s[k]);
 			arr[i][j++] = s[k++];
+			printf("arr[%d][%d]: %c", i, j, arr[i][j]);
+		}
 		arr[i][j] = '\0';
 		++i;
+		printf("arr[%d]: %s",i, arr[i]);
 	}
+	printf("\n");
 	return (arr);
 }
 
@@ -94,9 +98,9 @@ int	main(void)
 
 	splited = ft_split(str, del);
 	i = 0;
-	while (i < sizeof(splited))
+	while (splited[i] != NULL)
 	{
-		printf("ft_split: %s", splited[i]);
+		printf("%s", splited[i]);
 		++i;
 	}
 	return (0);

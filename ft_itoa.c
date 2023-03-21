@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:44:19 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/16 15:30:36 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/03/21 19:37:46 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	int_len(int n)
 
 	i = 0;
 	div = 10;
+	if (n == 0)
+		return (1);
 	while (n != 0)
 	{
 		n = n / 10;
@@ -36,10 +38,9 @@ char	*ft_itoa(int n)
 
 	len = int_len(n);
 	neg = 1;
-	pointer = (char *)malloc(len + 1);
 	if (n < 0)
 	{
-		pointer[0] += '-';
+		++len;
 		neg = -1;
 	}
 	pointer = (char *)malloc(len + 1);
@@ -52,12 +53,14 @@ char	*ft_itoa(int n)
 		n = n / 10;
 		--len;
 	}
+	if (neg == -1)
+		pointer[0] = '-';
 	return (pointer);
 }
 /*
 int	main(void)
 {
-	int	n = 48123;
+	int	n = -9;
 	printf("ft_itoa: %s\n", ft_itoa(n));
 	return (0);
 }*/
