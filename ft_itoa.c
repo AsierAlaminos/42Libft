@@ -16,10 +16,8 @@
 static int	int_len(int n)
 {
 	int	i;
-	int	div;
 
 	i = 0;
-	div = 10;
 	if (n == 0)
 		return (1);
 	while (n != 0)
