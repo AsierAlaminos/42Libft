@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:41:46 by aalamino          #+#    #+#             */
-/*   Updated: 2023/03/21 17:32:25 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:17:24 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	if (lp != -1)
 		return (&str[lp]);
-	if (c == '\0')
+	if (str[i] == character)
 		return (&str[i]);
 	return (NULL);
 }
