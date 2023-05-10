@@ -6,7 +6,7 @@
 /*   By: aalamino <aalamino@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:15:28 by asmus37           #+#    #+#             */
-/*   Updated: 2023/04/20 12:44:29 by aalamino         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:31:53 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ char	**ft_split(char const *s, char c)
 	char	**arr;
 
 	arr_len = del_count(s, c);
-	arr = (char **)malloc(sizeof(char *) * (ft_strlen(s) - arr_len + 1));
+	arr = (char **)malloc(sizeof(char *) * (arr_len + 1));
 	if (arr == NULL)
 		return (NULL);
 	return (add_str(s, arr, arr_len, c));
@@ -104,11 +104,12 @@ char	**ft_split(char const *s, char c)
 /*
 int	main(void)
 {
-	char	str[] = "";
-	char	del = 'z';
+	char	str[] = "  tripouille  42  ";
+	char	del = ' ';
 	char	**splited;
 	size_t		i;
 
+	i = 0;
 	splited = ft_split(str, del);
 	while (splited[i] != NULL)
 	{

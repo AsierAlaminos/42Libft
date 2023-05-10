@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asmus37 <asmus37@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalamino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 20:40:10 by asmus37           #+#    #+#             */
-/*   Updated: 2023/04/20 12:39:14 by aalamino         ###   ########.fr       */
+/*   Created: 2023/05/10 18:13:40 by aalamino          #+#    #+#             */
+/*   Updated: 2023/05/10 18:13:42 by aalamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,23 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*lista;
 	t_list	*temp;
+	t_list	*lista;
 	t_list	*temp_two;
 
-	if (!f || !lst)
-		return (NULL);
-	lista = malloc(sizeof(t_list));
-	if (!lista)
-		return (NULL);
-	temp = lista;
-	temp_two = lst;
-	while (temp_two)
+	temp = lst;
+	lista = NULL;
+	while (temp)
 	{
-		temp->content = f(temp_two->content);
-		temp->next = malloc(sizeof(t_list));
-		if (!temp)
-			ft_lstclear(&temp, del);
-		temp_two = temp_two->next;
+		temp_two = ft_lstnew(f(temp->content));
+		if (temp_two == NULL)
+		{
+			ft_lstclear(&lista, del);
+			return ((void *)(0));
+		}
+		ft_lstadd_back(&lista, temp_two);
 		temp = temp->next;
 	}
+	temp_two = NULL;
 	return (lista);
 }
