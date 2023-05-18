@@ -3,38 +3,52 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: acalin-b <acalin-b@student.42madrid.com    +#+  +:+       +#+         #
+#    By: aalamino <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/12 15:26:57 by acalin-b          #+#    #+#              #
-#    Updated: 2023/03/25 17:41:01 by acalin-b         ###   ########.fr        #
+#    Created: 2023/05/18 15:41:47 by aalamino          #+#    #+#              #
+#    Updated: 2023/05/18 15:42:12 by aalamino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libft.a
-CFLAG	= -Wall -Werror -Wextra -I.
-FILES		= ft_atoi.c ft_isalpha.c ft_isdigit.c ft_isascii.c ft_isprint.c ft_strlen.c ft_strlcpy.c ft_isalnum.c ft_toupper.c ft_tolower.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcat.c ft_strncmp.c ft_strchr.c ft_strrchr.c ft_memcmp.c ft_memchr.c ft_strnstr.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_split.c
+LIB = ar rcs
+RM = rm -f
 
-FILES_BO	= ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
+CC = gcc
+CCFLAGS = -Wall -Wextra -Werror
 
-OBJS	= $(FILES:%.c=%.o)
-B_OBJS	= $(FILES_BO:%.c=%.o)
+NAME = libft.a
+SRC =	ft_memset.c ft_bzero.c ft_strlen.c ft_atoi.c ft_isdigit.c ft_isalpha.c\
+ft_isprint.c ft_isascii.c ft_isalnum.c ft_memchr.c ft_memcpy.c \
+ft_memcmp.c ft_memmove.c ft_strchr.c ft_strdup.c ft_strlcat.c ft_strlcpy.c\
+ft_strncmp.c ft_toupper.c ft_tolower.c ft_strnstr.c ft_strrchr.c ft_calloc.c\
+ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_putendl_fd.c ft_substr.c\
+ft_strjoin.c ft_strtrim.c ft_strmapi.c ft_itoa.c ft_split.c 
+OBJ = $(SRC:.c=.o)
+INCLUDE = libft.h
+
+BONUSSRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c\
+ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c\
+ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c\
+
+BONUSOBJ = $(BONUSSRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+$(NAME): $(OBJ) $(INCLUDE)
+	$(LIB) $(NAME) $(OBJ)
 
-$(OBJ): $(FILES)
-	gcc $(CFLAG) $(FILES)
+bonus: $(OBJ) $(BONUSOBJ) $(INCLUDE)
+	$(LIB) $(NAME) $(BONUSOBJ) $(OBJ)
 
-bonus: $(OBJS) $(B_OBJS)
-	ar rc $(NAME) $(OBJS) $(B_OBJS)
+%.o: %.c
+	$(CC) $(CCFLAGS) -c -o $@ $<
+
 clean:
-	@rm -f *.o
+	$(RM) $(OBJ) $(BONUSOBJ)
 
 fclean: clean
-	@rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY : clean, fclean, re
+rebonus: fclean bonus
