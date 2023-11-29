@@ -9,7 +9,7 @@ Este es mi proyecto de Libft de 42Madrid
 | 1      | ft_atoi.c            |
 | 2      | ft_bzero.c           |
 | 3      | ft_calloc.c          |
-| 4      | ftalnum.c            |
+| 4      | ft_isalnum.c         |
 | 5      | ft_isalpha.c         |
 | 6      | ft_isascii.c         |
 | 7      | ft_isdigit.c         |
